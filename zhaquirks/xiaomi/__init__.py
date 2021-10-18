@@ -362,7 +362,7 @@ class XiaomiPowerConfiguration(PowerConfiguration, LocalDataCluster):
             BATTERY_QUANTITY_ATTR: 1,
             BATTERY_SIZE_ATTR: getattr(self.endpoint.device, BATTERY_SIZE, 0xFF),
         }
-        self._slope = 200 / (self.MAX_VOLTS_MV - self.MIN_VOLTS_MV)
+        self._slope = 100 / (self.MAX_VOLTS_MV - self.MIN_VOLTS_MV)
 
     def battery_reported(self, voltage_mv: int) -> None:
         """Battery reported."""
@@ -380,7 +380,7 @@ class XiaomiPowerConfiguration(PowerConfiguration, LocalDataCluster):
             self.MIN_VOLTS_MV,
             voltage_mv,
             self.MAX_VOLTS_MV,
-            percent / 2,
+            percent,
         )
 
         self._update_attribute(self.BATTERY_PERCENTAGE_REMAINING, percent)
