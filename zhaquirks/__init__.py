@@ -208,7 +208,7 @@ class PowerConfigurationCluster(CustomCluster, PowerConfiguration):
         volts = min(volts, self.MAX_VOLTS)
 
         percent = round(
-            ((volts - self.MIN_VOLTS) / (self.MAX_VOLTS - self.MIN_VOLTS)) * 200
+            ((volts - self.MIN_VOLTS) / (self.MAX_VOLTS - self.MIN_VOLTS)) * 100, 2
         )
 
         self.debug(
@@ -216,7 +216,7 @@ class PowerConfigurationCluster(CustomCluster, PowerConfiguration):
             raw_value,
             self.MAX_VOLTS,
             self.MIN_VOLTS,
-            percent / 2,
+            percent,
         )
 
         return percent
